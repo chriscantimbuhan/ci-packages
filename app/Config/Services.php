@@ -29,4 +29,12 @@ class Services extends BaseService
      *     return new \CodeIgniter\Example();
      * }
      */
+
+     /**
+      * Instantiate Filter Service from the provider
+      */
+    public static function filtersService(bool $getShared = true): \Ccantimbuhan\CiFilters\Services\FiltersService
+    {
+        return \Ccantimbuhan\CiFilters\CiFiltersServiceProvider::filtersService($getShared);
+    }
 }
