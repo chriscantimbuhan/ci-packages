@@ -30,7 +30,7 @@ class Database extends Config
         'username'     => '',
         'password'     => '',
         'database'     => '',
-        'DBDriver'     => 'MySQLi',
+        'DBDriver'     => '',
         'DBPrefix'     => '',
         'pConnect'     => false,
         'DBDebug'      => true,
@@ -199,5 +199,13 @@ class Database extends Config
         if (ENVIRONMENT === 'testing') {
             $this->defaultGroup = 'tests';
         }
+
+        $this->default = array_merge($this->default ?? [], [
+            'hostname' => env('database.default.hostname'),
+            'username' => env('database.default.username'),
+            'password' => env('database.default.password'),
+            'database' => env('database.default.database'),
+            'DBDriver' => env('database.default.DBDriver')
+        ]);
     }
 }
